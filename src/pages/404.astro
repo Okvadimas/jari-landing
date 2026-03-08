@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 - Halaman Tidak Ditemukan | Jaripos">
+	<div class="min-h-screen bg-slate-50 flex flex-col items-center justify-center px-4 text-center">
+        <div class="w-20 h-20 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center mb-8 mx-auto shadow-inner">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+        </div>
+		<h1 class="text-6xl font-extrabold text-slate-900 mb-4">404</h1>
+		<h2 class="text-2xl font-bold text-slate-700 mb-6">Oops! Halaman Tidak Ditemukan</h2>
+		<p class="text-slate-500 max-w-md mx-auto mb-10">Mungkin halaman yang Anda cari telah dipindahkan, direname, atau Anda salah mengetik URL.</p>
+		<a href="/" class="group relative inline-flex items-center justify-center overflow-hidden rounded-full px-8 py-4 font-bold text-white bg-brand-600 duration-300 hover:bg-brand-700 shadow-lg shadow-brand-500/40">
+            <div class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
+                <div class="relative h-full w-8 bg-white/20"></div>
+            </div>
+            <span class="mr-2 relative">Kembali ke Beranda</span>
+            <svg class="h-5 w-5 relative transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+        </a>
+	</div>
+</Layout>
