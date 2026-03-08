@@ -1,0 +1,140 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+	type?: string;
+	image?: string;
+	canonicalURL?: string | URL;
+	keywords?: string;
+	gtmId?: string;
+}
+
+const { 
+	title, 
+	description = "Jari Pos adalah platform Point of Sales (POS) yang memudahkan pengelolaan transaksi dan operasional bisnis Anda secara efisien dan terintegrasi.",
+	type = "website",
+	image = "/assets/images/brand-logo.png",
+	canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://jaripos.com'),
+	keywords = "aplikasi kasir, POS umkm, point of sales, kasir online, manajemen stok",
+	gtmId = "GTM-MKQ68QSW"
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content={type} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, Astro.url)} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+		<!-- Google Tag Manager -->
+		{gtmId && (
+			<script is:inline define:vars={{ gtmId }}>
+				(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+				})(window,document,'script','dataLayer',gtmId);
+			</script>
+		)}
+		<!-- End Google Tag Manager -->
+		
+		<!-- PWA Meta Tags -->
+		<meta name="theme-color" content="#0ea5e9">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="apple-mobile-web-app-title" content="Jaripos">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="application-name" content="Jaripos">
+		<meta name="msapplication-TileColor" content="#0ea5e9">
+		
+		<!-- PWA Manifest & Icons (Note: Update paths later to match Astro's public directory) -->
+		<link rel="manifest" href="/manifest.json">
+		<link rel="shortcut icon" href="/assets/images/brand-logo.svg">
+		<link rel="apple-touch-icon" href="/assets/images/pwa/icon-152x152.png">
+		
+		<!-- Fonts & Icons -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		
+		<!-- Animation CSS -->
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
+
+		<!-- Scripts -->
+		<script is:inline src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+		<script is:inline src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+		<script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+		<script is:inline>
+			// Check if running as PWA (standalone mode)
+			if (window.matchMedia('(display-mode: standalone)').matches || 
+				window.navigator.standalone === true) {
+				// Redirect to login page when opened as PWA
+				window.location.replace('/login');
+			}
+		</script>
+	</head>
+	<body class="font-sans text-slate-600 antialiased overflow-x-hidden bg-slate-900">
+		<!-- Google Tag Manager (noscript) -->
+		{gtmId && (
+			<noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		)}
+		<!-- End Google Tag Manager (noscript) -->
+
+		<slot />
+		
+		<!-- Initialize Global Scripts -->
+		<script is:inline>
+			$(document).ready(function() {
+				// Lenis Smooth Scroll
+				const lenis = new Lenis({
+					duration: 1.2,
+					syncTouch: true,
+					easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+					smoothWheel: true,
+					smoothTouch: true,
+					touchMultiplier: 1.5,
+				});
+
+				function raf(time) {
+					lenis.raf(time);
+					requestAnimationFrame(raf);
+				}
+				requestAnimationFrame(raf);
+
+				// Init AOS
+				AOS.init({
+					duration: 800,
+					once: true,
+					offset: 50
+				});
+				
+				// Make lenis globally accessible for other scripts
+				window.lenis = lenis;
+			});
+		</script>
+	</body>
+</html>
