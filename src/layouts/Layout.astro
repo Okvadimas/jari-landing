@@ -76,18 +76,20 @@ const {
 		<link rel="shortcut icon" href="/assets/images/brand-logo.svg">
 		<link rel="apple-touch-icon" href="/assets/images/pwa/icon-152x152.png">
 		
-		<!-- Fonts & Icons -->
+		<!-- Fonts & Icons (Non-blocking) -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="/assets/css/font-awesome.css">
-		
-		<!-- Animation CSS -->
-		<link href="/assets/css/aos.css" rel="stylesheet">
+		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@700;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+		<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@700;900&display=swap" rel="stylesheet"></noscript>
 
-		<!-- Scripts -->
-		<script is:inline src="/assets/js/jquery.js"></script>
-		<script is:inline src="/assets/js/aos.js"></script>
+		<link rel="preload" as="style" href="/assets/css/font-awesome.css" onload="this.onload=null;this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="/assets/css/font-awesome.css"></noscript>
+		
+		<!-- Animation CSS (Non-blocking) -->
+		<link rel="preload" as="style" href="/assets/css/aos.css" onload="this.onload=null;this.rel='stylesheet'">
+		<noscript><link href="/assets/css/aos.css" rel="stylesheet"></noscript>
+
+
 
 		<script is:inline>
 			// Check if running as PWA (standalone mode)
@@ -108,6 +110,10 @@ const {
 
 		<slot />
 		
+		<!-- Scripts (Non-blocking, loaded at end of body) -->
+		<script is:inline src="/assets/js/jquery.js"></script>
+		<script is:inline src="/assets/js/aos.js"></script>
+
 		<!-- Initialize Global Scripts -->
 		<script is:inline>
 			$(document).ready(function() {
