@@ -16,7 +16,7 @@ const {
 	description = "Jari Pos adalah platform Point of Sales (POS) yang memudahkan pengelolaan transaksi dan operasional bisnis Anda secara efisien dan terintegrasi.",
 	type = "website",
 	image = "/assets/images/og-image.png",
-	canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://jaripos.com'),
+	canonicalURL = new URL(Astro.url.pathname, Astro.url.origin),
 	keywords = "aplikasi kasir, POS umkm, point of sales, kasir online, manajemen stok",
 	gtmId = "GTM-MKQ68QSW"
 } = Astro.props;
