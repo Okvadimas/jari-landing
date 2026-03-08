@@ -15,7 +15,7 @@ const {
 	title, 
 	description = "Jari Pos adalah platform Point of Sales (POS) yang memudahkan pengelolaan transaksi dan operasional bisnis Anda secara efisien dan terintegrasi.",
 	type = "website",
-	image = "/assets/images/brand-logo.png",
+	image = "/assets/images/og-image.png",
 	canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://jaripos.com'),
 	keywords = "aplikasi kasir, POS umkm, point of sales, kasir online, manajemen stok",
 	gtmId = "GTM-MKQ68QSW"
@@ -32,19 +32,23 @@ const {
 		<meta name="keywords" content={keywords} />
 		<link rel="canonical" href={canonicalURL} />
 
-		<!-- Open Graph / Facebook -->
+		<!-- Open Graph / Facebook / WhatsApp -->
 		<meta property="og:type" content={type} />
 		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={new URL(image, Astro.url)} />
+		<meta property="og:site_name" content="Jaripos" />
+		<meta property="og:image" content={new URL(image, canonicalURL).href} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:type" content="image/png" />
 
 		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={canonicalURL} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={new URL(image, Astro.url)} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={new URL(image, canonicalURL).href} />
 
 		<!-- Google Tag Manager -->
 		{gtmId && (
