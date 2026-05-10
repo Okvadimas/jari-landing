@@ -5,15 +5,15 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/sections/Hero.astro';
 import Comparison from '../components/sections/Comparison.astro';
+import TargetMarket from '../components/sections/TargetMarket.astro';
 import Features from '../components/sections/Features.astro';
-import Scalable from '../components/sections/Scalable.astro';
+import Innovation from '../components/sections/Innovation.astro';
 import Pricing from '../components/sections/Pricing.astro';
-import Cta from '../components/sections/Cta.astro';
 ---
 
 <Layout title="Jaripos - Aplikasi Kasir UMKM Masakini">
     <!-- Main Content Wrapper for Footer Reveal Effect -->
-    <main class="relative z-10 bg-white shadow-2xl mb-[100vh]">
+    <main class="relative z-10 bg-white shadow-2xl mb-[65vh]">
 
         <Navbar />
 
@@ -23,17 +23,17 @@ import Cta from '../components/sections/Cta.astro';
         <!-- Problem vs Solution Section -->
         <Comparison />
 
+        <!-- Target Market Section -->
+        <TargetMarket />
+
         <!-- Features Section with Glassmorphism -->
         <Features />
 
-        <!-- Scalable Section -->
-        <Scalable />
+        <!-- Innovation & Roadmap Section -->
+        <Innovation />
 
         <!-- Pricing Section -->
         <Pricing />
-        
-        <!-- CTA Section -->
-        <Cta />
 
     </main>
 

@@ -1,81 +1,102 @@
 ---
 ---
-<section id="pricing" class="py-24 bg-white relative">
+<section id="pricing" class="py-24 bg-white relative overflow-hidden">
     <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30"></div>
+    
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Investasi Receh, Untung Gede</h2>
-            <p class="text-slate-500 text-md md:text-lg max-w-2xl mx-auto">Pilih paket yang pas buat tokomu. Tidak ada biaya tersembunyi.</p>
-            
-            <!-- Toggle (Functional) -->
-            <div class="mt-8 flex justify-center items-center gap-3">
-                <span class="text-sm font-semibold text-slate-500 cursor-pointer" onclick="$('#pricing-toggle').click()">Bulanan</span>
-                <button id="pricing-toggle" data-track="pricing-toggle-billing" aria-label="Ganti periode billing" class="w-14 h-8 bg-brand-600 rounded-full p-1 flex items-center transition-colors duration-300 focus:outline-none">
-                    <div id="toggle-circle" class="w-6 h-6 bg-white rounded-full shadow-md transform translate-x-6 transition-transform duration-300"></div>
-                </button>
-                <span class="text-sm font-bold text-slate-900 cursor-pointer" onclick="$('#pricing-toggle').click()">Tahunan <span class="text-brand-500 text-xs ml-1">(Hemat 33%)</span></span>
-            </div>
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">Investasi Receh, Untung Gede</h2>
+            <p class="text-slate-500 text-md md:text-xl max-w-2xl mx-auto">Semua pemilik bisnis berhak sukses. Mulai perjalanan Anda tanpa biaya.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
+        <div class="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto items-start">
             
-            <!-- Starter -->
-            <div data-aos="fade-up" data-aos-delay="100" class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <h3 class="text-xl font-bold text-slate-900">Starter</h3>
-                <p class="text-slate-500 text-sm mt-2 mb-6">Untuk usaha rumahan baru.</p>
-                <div class="flex items-baseline mb-6">
-                    <span class="text-4xl font-extrabold text-slate-900">Gratis</span>
-                </div>
-                <a href="/register" data-track="pricing-plan-starter" class="block w-full py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-center rounded-xl transition duration-300 mb-8">Daftar Sekarang</a>
-                <ul class="space-y-4 text-sm text-slate-600">
-                    <li class="flex items-center gap-3"><svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 1 Outlet</li>
-                    <li class="flex items-center gap-3"><svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 100 Produk</li>
-                    <li class="flex items-center gap-3"><svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Laporan Harian Sederhana</li>
-                </ul>
-            </div>
-
-            <!-- Business (Featured) -->
-            <div data-aos="fade-up" data-aos-delay="200" class="relative bg-slate-900 rounded-3xl p-8 md:p-10 border border-slate-700 shadow-2xl transform md:scale-105 z-10 overflow-hidden group">
-                <!-- Glassmorphism BG Inner -->
-                <div class="absolute inset-0 bg-gradient-to-br from-brand-600/20 to-purple-600/20 backdrop-blur-sm pointer-events-none"></div>
-                <div class="absolute top-0 right-0 bg-gradient-to-l from-brand-500 to-purple-500 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl shadow-lg">PALING LARIS</div>
+            <!-- PRIORITY: Paket Kelingking (The only entry point) -->
+            <div data-aos="fade-right" class="w-full lg:w-3/5 bg-slate-900 rounded-[2.5rem] p-8 md:p-12 border border-slate-800 shadow-2xl relative overflow-hidden group">
+                <!-- Glowing Decoration -->
+                <div class="absolute -top-24 -left-24 w-64 h-64 bg-brand-600/20 rounded-full blur-3xl group-hover:bg-brand-600/30 transition-all duration-700"></div>
                 
                 <div class="relative z-10">
-                    <h3 class="text-2xl font-bold text-white">Pro Business</h3>
-                    <p class="text-slate-300 text-sm mt-2 mb-6">Wajib buat yang mau scale-up.</p>
-                    <div class="flex items-baseline mb-6">
-                        <span id="price-pro" class="text-5xl font-extrabold text-white">99k</span>
-                        <span id="price-period" class="text-slate-300 font-small ml-2">/ bulan</span>
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-600 text-white text-[10px] font-bold mb-8 uppercase tracking-[0.2em] shadow-lg shadow-brand-500/20">
+                        Prioritas Utama
                     </div>
-                    <a href="/register" data-track="pricing-plan-pro" class="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 py-4 px-6 font-bold text-white shadow-lg shadow-brand-500/30 duration-300 hover:from-brand-400 hover:to-brand-500">
-                         <div class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:[transform:skew(-12deg)_translateX(100%)]">
-                            <div class="relative h-full w-8 bg-white/20"></div>
-                        </div>
-                        <span class="relative">Coba Gratis 14 Hari</span>
+                    
+                    <h3 class="text-4xl md:text-5xl font-black text-white mb-4">Paket Kelingking</h3>
+                    <p class="text-slate-400 text-lg mb-10 max-w-md leading-relaxed">Nikmati akses penuh selama 14 hari untuk merasakan bagaimana Jaripos mengelola tokomu secara otomatis.</p>
+                    
+                    <div class="flex items-baseline mb-10">
+                        <span class="text-7xl font-black text-white">Gratis</span>
+                        <span class="text-brand-400 ml-3 text-xl font-medium">/ 14 Hari Trial</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                        {[
+                            'Akses Semua Fitur Utama',
+                            'Input Produk Unlimited',
+                            'Laporan Penjualan Realtime',
+                            'Manajemen Stok Dasar',
+                            'Multi-Platform (Web & Mobile)',
+                            'Support Chat Komunitas'
+                        ].map((item) => (
+                            <div class="flex items-center gap-3 text-slate-300">
+                                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-500/10 flex items-center justify-center">
+                                    <svg class="w-3.5 h-3.5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <span class="text-sm md:text-base font-medium">{item}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <a href="https://app.jaripos.com/register" data-track="pricing-cta-pro" class="group relative inline-flex w-full md:w-auto items-center justify-center overflow-hidden rounded-2xl bg-white px-12 py-5 font-black text-slate-900 shadow-xl duration-300 hover:scale-[1.03] hover:shadow-white/10">
+                        <span class="relative text-lg">Coba Gratis Sekarang</span>
                     </a>
-                    <ul class="space-y-4 text-sm text-slate-300 mt-8">
-                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Unlimited Outlet & Produk</li>
-                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Manajemen Stok Lengkap</li>
-                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Laporan Laba/Rugi Realtime</li>
-                        <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Manajemen Pelanggan (CRM)</li>
-                    </ul>
+                    <p class="mt-6 text-slate-500 text-xs md:text-sm flex items-center gap-2">
+                        <svg class="w-4 h-4 text-brand-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Tanpa biaya pendaftaran & kartu kredit
+                    </p>
                 </div>
             </div>
 
-            <!-- Enterprise -->
-            <div data-aos="fade-up" data-aos-delay="300" class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <h3 class="text-xl font-bold text-slate-900">Enterprise</h3>
-                <p class="text-slate-500 text-sm mt-2 mb-6">Untuk franchise & korporat.</p>
-                <div class="flex items-baseline mb-6">
-                    <span class="text-4xl font-extrabold text-slate-900">Custom</span>
+            <!-- SECONDARY: Informasi Upgrade (No Button) -->
+            <div data-aos="fade-left" class="w-full lg:w-2/5 flex flex-col pt-4">
+                <div class="bg-slate-50 rounded-[2rem] p-8 border border-slate-200">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Paket Jempol</h3>
+                    <p class="text-slate-500 text-sm mb-8">Setelah masa trial berakhir, Anda bisa upgrade ke Paket Jempol di dalam panel dashboard.</p>
+                    
+                    <!-- Sizing/Tier Info -->
+                    <div class="space-y-4 mb-8">
+                        {[
+                            { label: 'Langganan 1 Bulan', price: '45.000', sub: '/ bulan' },
+                            { label: 'Langganan 3 Bulan', price: '40.000', sub: '/ bulan' },
+                            { label: 'Langganan 6 Bulan', price: '35.000', sub: '/ bulan' },
+                            { label: 'Langganan 1 Tahun', price: '30.000', sub: '/ bulan', highlight: true }
+                        ].map((tier) => (
+                            <div class={`flex items-center justify-between p-4 rounded-2xl border ${tier.highlight ? 'bg-brand-50 border-brand-200 ring-1 ring-brand-200' : 'bg-white border-slate-100'}`}>
+                                <span class={`text-sm font-bold ${tier.highlight ? 'text-brand-700' : 'text-slate-600'}`}>{tier.label}</span>
+                                <div class="text-right">
+                                    <span class={`text-lg font-black ${tier.highlight ? 'text-brand-600' : 'text-slate-900'}`}>{tier.price}</span>
+                                    <span class="text-[10px] text-slate-400 block -mt-1">{tier.sub}</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-200">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Keunggulan Pro:</p>
+                        <ul class="space-y-3">
+                            {['Manajemen Stok & Inventori', 'Laporan Laba/Rugi Realtime', 'Manajemen Pelanggan (CRM)', 'Multi-User & Hak Akses Cabang'].map((feat) => (
+                                <li class="flex items-start gap-2 text-xs text-slate-600">
+                                    <svg class="w-3.5 h-3.5 text-brand-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                    <span>{feat}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-                <a href="https://wa.me/6281234567890" target="_blank" data-track="pricing-plan-enterprise" class="block w-full py-3 px-4 bg-white border-2 border-slate-200 hover:border-brand-300 hover:text-brand-600 text-slate-700 font-bold text-center rounded-xl transition duration-300 mb-8"><i class="fab fa-whatsapp mr-2"></i> Hubungi Sales</a>
-                <ul class="space-y-4 text-sm text-slate-600">
-                    <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Dedicated Account Manager</li>
-                    <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Custom API Integration</li>
-                    <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> White Label Option</li>
-                </ul>
+                
+
             </div>
+
         </div>
     </div>
 </section>
