@@ -43,10 +43,11 @@
                 </div>
             </div>
 
-            <!-- Bottom: Interactive Image Accordion -->
-            <div data-aos="fade-up" data-aos-delay="500" class="relative w-full max-w-6xl mx-auto h-[400px] md:h-[600px] flex justify-center items-center">
-                <!-- Flex Accordion Stack -->
-                <div class="relative flex justify-center items-stretch w-full h-full gap-2 md:gap-6 group/stack">
+            <!-- Bottom: Interactive Image Accordion (Desktop) / Carousel (Mobile) -->
+            <div data-aos="fade-up" data-aos-delay="500" class="relative w-full max-w-6xl mx-auto h-[350px] sm:h-[450px] md:h-[600px] flex justify-center items-center">
+                
+                <!-- Desktop View: Flex Accordion Stack -->
+                <div class="hidden md:flex justify-center items-stretch w-full h-full gap-6 group/stack">
                     {[
                         { src: '/assets/images/pos-preview.png', title: 'Dashboard Kasir' },
                         { src: '/assets/images/retail-context.png', title: 'Kelola Stok Mudah' },
@@ -56,8 +57,8 @@
                         return (
                             <div 
                                 class={`hero-card card-3d-tilt relative transition-all duration-500 ease-[cubic-bezier(0.2,0,0,1)] overflow-hidden rounded-3xl group/card cursor-pointer shadow-xl border border-slate-100
-                                    ${isDefault ? 'flex-[4] md:flex-[10] group-hover/stack:flex-[1]' : 'flex-[1]'}
-                                    hover:!flex-[12]
+                                    ${isDefault ? 'flex-[10]' : 'flex-[1]'}
+                                    hover:!flex-[12] group-hover/stack:hover:!flex-[12] group-hover/stack:flex-[1]
                                 `}
                                 style="will-change: flex, transform; transform: translateZ(0);"
                             >
@@ -77,7 +78,86 @@
                         );
                     })}
                 </div>
+
+                <!-- Mobile View: Auto-fading Single Image Carousel -->
+                <div class="flex md:hidden relative w-full h-full overflow-hidden rounded-2xl shadow-xl border border-slate-100">
+                    {[
+                        { src: '/assets/images/pos-preview.png', title: 'Dashboard Kasir' },
+                        { src: '/assets/images/retail-context.png', title: 'Kelola Stok Mudah' },
+                        { src: '/assets/images/pos-preview.png', title: 'Laporan Otomatis' },
+                    ].map((item, index) => {
+                        return (
+                            <div 
+                                class={`mobile-carousel-slide absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                                data-index={index}
+                            >
+                                <img 
+                                    src={item.src} 
+                                    alt={item.title} 
+                                    class="w-full h-full object-cover" 
+                                />
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent">
+                                    <div class="absolute bottom-6 left-6 right-6 text-left">
+                                        <p class="text-white font-bold text-base sm:text-lg">{item.title}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
+                    
+                    <!-- Indicator Dots -->
+                    <div class="absolute bottom-4 right-6 flex space-x-2 z-20">
+                        <span class="carousel-dot w-2 h-2 rounded-full bg-white opacity-100 transition-opacity duration-300" data-slide="0"></span>
+                        <span class="carousel-dot w-2 h-2 rounded-full bg-white opacity-40 transition-opacity duration-300" data-slide="1"></span>
+                        <span class="carousel-dot w-2 h-2 rounded-full bg-white opacity-40 transition-opacity duration-300" data-slide="2"></span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 </section>
+
+<script is:inline>
+    function initMobileCarousel() {
+        const slides = document.querySelectorAll('.mobile-carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        if (slides.length === 0) return;
+
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.remove('opacity-0', 'z-0');
+                    slide.classList.add('opacity-100', 'z-10');
+                } else {
+                    slide.classList.remove('opacity-100', 'z-10');
+                    slide.classList.add('opacity-0', 'z-0');
+                }
+            });
+
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('opacity-40');
+                    dot.classList.add('opacity-100');
+                } else {
+                    dot.classList.remove('opacity-100');
+                    dot.classList.add('opacity-40');
+                }
+            });
+        }
+
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }, 4000);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMobileCarousel);
+    } else {
+        initMobileCarousel();
+    }
+</script>

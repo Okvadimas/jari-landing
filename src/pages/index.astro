@@ -12,6 +12,8 @@ import Pricing from '../components/sections/Pricing.astro';
 ---
 
 <Layout title="Jaripos — Aplikasi Kasir Pintar Paling Terjangkau untuk UMKM">
+    <Navbar />
+
     <!-- Main Content Wrapper for Footer Reveal Effect -->
     <main class="relative z-10 bg-white shadow-2xl">
 
@@ -19,7 +21,6 @@ import Pricing from '../components/sections/Pricing.astro';
         <div class="hero-light-wrapper">
             <div class="mesh-grid-light"></div>
             
-            <Navbar />
             <Hero />
         </div>
 
@@ -42,43 +43,29 @@ import Pricing from '../components/sections/Pricing.astro';
 
     <Footer />
 
+    <!-- Floating WhatsApp Button -->
+    <a 
+        href="https://wa.me/6285875502569?text=Halo%2C%20saya%20tertarik%20dengan%20Jaripos" 
+        target="_blank" 
+        aria-label="Hubungi kami di WhatsApp" 
+        class="fixed bottom-8 right-8 lg:bottom-12 lg:right-12 z-50 w-14 h-14 bg-[#25D366] hover:bg-[#20BA56] text-white rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 animate-whatsapp animate-float"
+    >
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
 
-
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 z-50 w-12 h-12 bg-brand-600 hover:bg-brand-700 text-white rounded-full shadow-lg shadow-brand-500/30 flex items-center justify-center opacity-0 invisible translate-y-4 transition-all duration-300 hover:scale-110">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-        </svg>
-    </button>
+    <style>
+        @keyframes pulse-slow {
+            0%, 100% { transform: scale(1); box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 20px 35px -5px rgba(37, 211, 102, 0.6); }
+        }
+        .animate-whatsapp {
+            animation: pulse-slow 3s infinite ease-in-out;
+        }
+    </style>
 
     <!-- Page Specific Scripts -->
     <script is:inline>
         $(document).ready(function() {
-            // Pricing Toggle Logic
-            let isYearly = true;
-            
-            $('#pricing-toggle').click(function() {
-                isYearly = !isYearly;
-                
-                if(isYearly) {
-                    $(this).removeClass('bg-slate-200').addClass('bg-brand-600');
-                    $('#toggle-circle').addClass('translate-x-6');
-                    
-                    $('#price-pro').text('99k');
-                    $('#price-period').text('/ bulan (dibayar tahunan)');
-                    
-                    $('#price-pro').hide().fadeIn(300);
-                } else {
-                    $(this).removeClass('bg-brand-600').addClass('bg-slate-200');
-                    $('#toggle-circle').removeClass('translate-x-6');
-                    
-                    $('#price-pro').text('149k');
-                    $('#price-period').text('/ bulan');
-                    
-                    $('#price-pro').hide().fadeIn(300);
-                }
-            });
-
             // Anchor Links Smooth Scrolling
             $.extend($.easing, {
                 easeInOutExpo: function (x, t, b, c, d) {
@@ -87,27 +74,6 @@ import Pricing from '../components/sections/Pricing.astro';
                     if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
                     return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
                 }
-            });
-
-            // Anchor Links Smooth Scrolling handled natively by Layout.astro (scroll-padding-top)
-
-
-            // Back to Top Button
-            const backToTop = $('#back-to-top');
-            
-            $(window).scroll(function() {
-                if ($(this).scrollTop() > 300) {
-                    backToTop.removeClass('opacity-0 invisible translate-y-4').addClass('opacity-100 visible translate-y-0');
-                } else {
-                    backToTop.removeClass('opacity-100 visible translate-y-0').addClass('opacity-0 invisible translate-y-4');
-                }
-            });
-
-            backToTop.click(function() {
-                window.lenis.scrollTo(0, { 
-                    duration: 2,
-                    easing: (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
-                });
             });
         });
     </script>

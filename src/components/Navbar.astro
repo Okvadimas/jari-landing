@@ -1,30 +1,91 @@
 ---
 ---
-<nav id="navbar" class="fixed w-full z-50 transition-all duration-500 ease-in-out bg-transparent border-b border-white/10">
+<nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out bg-transparent border-b border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div id="navbar-container" class="flex justify-between items-center h-28 transition-all duration-500">
             <!-- Logo -->
             <div class="flex-shrink-0 flex items-center cursor-pointer transition-transform hover:scale-105" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                 <img src="/JARI-BLACK.png" alt="Jaripos Logo" class="h-8 md:h-10 w-auto logo-black transition-opacity duration-500" />
-                <img src="/JARI-WHITE.png" alt="Jaripos Logo" class="h-8 md:h-10 w-auto logo-white hidden transition-opacity duration-500" />
+                <img src="/JARI-WHITE.png" alt="Jaripos Logo" class="h-8 md:h-10 w-auto logo-white transition-opacity duration-500" />
             </div>
 
             <style>
-                /* When NOT scrolled (Idle/Top - Light Background) */
-                #navbar:not(.nav-scrolled) .logo-white { display: none; }
-                #navbar:not(.nav-scrolled) .logo-black { display: block; }
+                /* Stacking context & Display Overrides */
+                @media (max-width: 767px) {
+                    .desktop-menu-container {
+                        display: none !important;
+                    }
+                    .mobile-menu-btn-container {
+                        display: flex !important;
+                        align-items: center !important;
+                        z-index: 50 !important;
+                    }
+                }
+                @media (min-width: 768px) {
+                    .desktop-menu-container {
+                        display: flex !important;
+                        align-items: center !important;
+                    }
+                    .mobile-menu-btn-container {
+                        display: none !important;
+                    }
+                }
+
+                /* Logo display toggle */
+                #navbar:not(.nav-scrolled) .logo-white { display: none !important; }
+                #navbar:not(.nav-scrolled) .logo-black { display: block !important; }
                 
-                /* When scrolled (Dark Background - Footer Color) */
-                #navbar.nav-scrolled .logo-white { display: block; }
-                #navbar.nav-scrolled .logo-black { display: none; }
+                #navbar.nav-scrolled .logo-white { display: block !important; }
+                #navbar.nav-scrolled .logo-black { display: none !important; }
                 
                 /* Dynamic theme overrides for dark sections if any */
-                #navbar.nav-dark .logo-black { display: none; }
-                #navbar.nav-dark .logo-white { display: block; }
+                #navbar.nav-dark .logo-black { display: none !important; }
+                #navbar.nav-dark .logo-white { display: block !important; }
+
+                /* Solid mobile menu background when open */
+                #navbar.mobile-menu-open {
+                    background-color: #ffffff !important;
+                    border-bottom: 1px solid #e2e8f0 !important;
+                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05) !important;
+                }
+                #navbar.mobile-menu-open.nav-scrolled {
+                    background-color: #0f172a !important;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+                }
+                
+                /* Logo overrides when mobile menu is open in non-scrolled mode */
+                #navbar.mobile-menu-open:not(.nav-scrolled) .logo-black { display: block !important; }
+                #navbar.mobile-menu-open:not(.nav-scrolled) .logo-white { display: none !important; }
+
+                /* Mobile Hamburger Button Color Enforcement */
+                #mobile-menu-btn {
+                    color: #1e293b !important; /* slate-800/900 */
+                    display: flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    z-index: 50 !important;
+                }
+                #navbar.nav-scrolled #mobile-menu-btn {
+                    color: #ffffff !important;
+                }
+                #navbar.mobile-menu-open:not(.nav-scrolled) #mobile-menu-btn {
+                    color: #1e293b !important;
+                }
+                #mobile-menu-btn svg {
+                    stroke: currentColor !important;
+                    width: 32px !important;
+                    height: 32px !important;
+                }
+                #mobile-menu-btn svg.hidden {
+                    display: none !important;
+                }
+                #mobile-menu-btn svg:not(.hidden) {
+                    display: block !important;
+                }
             </style>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-8 items-center">
+            <div class="desktop-menu-container space-x-8">
                 <a href="#comparison" class="nav-link text-slate-900 hover:text-cyan-brand font-medium transition duration-300 hover:-translate-y-0.5">Kenapa Jaripos?</a>
                 <a href="#target-market" class="nav-link text-slate-900 hover:text-cyan-brand font-medium transition duration-300 hover:-translate-y-0.5">Cocok untuk Siapa?</a>
                 <a href="#features" class="nav-link text-slate-900 hover:text-cyan-brand font-medium transition duration-300 hover:-translate-y-0.5">Fitur</a>
@@ -39,14 +100,14 @@
             </div>
 
             <!-- Mobile Menu Button -->
-            <div class="md:hidden flex items-center">
-                <button id="mobile-menu-btn" aria-label="Menu" class="text-slate-900 hover:text-cyan-brand focus:outline-none p-2 transition-all duration-300">
+            <div class="mobile-menu-btn-container">
+                <button id="mobile-menu-btn" aria-label="Menu" class="focus:outline-none p-2 transition-all duration-300">
                     <!-- Hamburger Icon -->
-                    <svg id="hamburger-icon" class="h-8 w-8 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg id="hamburger-icon" class="transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
                     <!-- Close (X) Icon -->
-                    <svg id="close-icon" class="h-8 w-8 hidden transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg id="close-icon" class="hidden transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
                 </button>
@@ -67,18 +128,18 @@
 </nav>
 
 <script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
+    function initNavbar() {
         const navbar = document.getElementById('navbar');
-        
-        // Sections that require a DARK navbar (white text/logo)
-        const darkSections = [
-            document.getElementById('scalable'),
-            document.getElementById('cta')
-        ].filter(el => el !== null);
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const navbarContainer = document.getElementById('navbar-container');
+
+        if (!navbar) return;
 
         function updateNavbar() {
-            const scrollPos = window.scrollY;
-            const navbarHeight = 80;
+            const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
             
             // Handle Scroll Background
             if (scrollPos > 40) {
@@ -86,51 +147,71 @@
                 navbar.classList.remove('bg-transparent', 'border-white/10');
                 
                 // Update text colors for dark background (scrolled)
-                navbar.querySelectorAll('.nav-link, #mobile-menu-btn').forEach(el => {
+                navbar.querySelectorAll('.nav-link').forEach(el => {
                     el.classList.remove('text-slate-900');
                     el.classList.add('text-white');
                 });
 
-                document.getElementById('navbar-container').classList.remove('h-28');
-                document.getElementById('navbar-container').classList.add('h-20');
+                if (navbarContainer) {
+                    navbarContainer.classList.remove('h-28');
+                    navbarContainer.classList.add('h-20');
+                }
             } else {
                 navbar.classList.remove('nav-scrolled');
                 navbar.classList.add('bg-transparent', 'border-white/10');
                 
                 // Update text colors for light background (idle)
-                navbar.querySelectorAll('.nav-link, #mobile-menu-btn').forEach(el => {
+                navbar.querySelectorAll('.nav-link').forEach(el => {
                     el.classList.remove('text-white');
                     el.classList.add('text-slate-900');
                 });
 
-                document.getElementById('navbar-container').classList.remove('h-20');
-                document.getElementById('navbar-container').classList.add('h-28');
+                if (navbarContainer) {
+                    navbarContainer.classList.remove('h-20');
+                    navbarContainer.classList.add('h-28');
+                }
             }
         }
         
         window.addEventListener('scroll', updateNavbar, { passive: true });
+        window.addEventListener('touchmove', updateNavbar, { passive: true });
         updateNavbar();
 
-        // Mobile Menu Toggle
-        let menuOpen = false;
-        $('#mobile-menu-btn').click(function() {
-            menuOpen = !menuOpen;
-            $('#mobile-menu').slideToggle();
-            
-            if (menuOpen) {
-                $('#hamburger-icon').addClass('hidden');
-                $('#close-icon').removeClass('hidden');
-            } else {
-                $('#hamburger-icon').removeClass('hidden');
-                $('#close-icon').addClass('hidden');
-            }
-        });
-        
-        $('#mobile-menu a').click(function() {
-            $('#mobile-menu').slideUp();
-            menuOpen = false;
-            $('#hamburger-icon').removeClass('hidden');
-            $('#close-icon').addClass('hidden');
-        });
-    });
+        // Mobile Menu Toggle using pure Vanilla JS
+        if (mobileMenuBtn && mobileMenu) {
+            let menuOpen = false;
+            mobileMenuBtn.addEventListener('click', () => {
+                menuOpen = !menuOpen;
+                if (menuOpen) {
+                    mobileMenu.classList.remove('hidden');
+                    navbar.classList.add('mobile-menu-open');
+                    if (hamburgerIcon) hamburgerIcon.classList.add('hidden');
+                    if (closeIcon) closeIcon.classList.remove('hidden');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    navbar.classList.remove('mobile-menu-open');
+                    if (hamburgerIcon) hamburgerIcon.classList.remove('hidden');
+                    if (closeIcon) closeIcon.classList.add('hidden');
+                }
+            });
+
+            // Close menu on link click
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuOpen = false;
+                    mobileMenu.classList.add('hidden');
+                    navbar.classList.remove('mobile-menu-open');
+                    if (hamburgerIcon) hamburgerIcon.classList.remove('hidden');
+                    if (closeIcon) closeIcon.classList.add('hidden');
+                });
+            });
+        }
+    }
+
+    // Run robustly whether DOM is already loaded or still loading
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initNavbar);
+    } else {
+        initNavbar();
+    }
 </script>
